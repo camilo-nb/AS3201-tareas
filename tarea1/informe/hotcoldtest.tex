@@ -1,6 +1,47 @@
 \section{Hot--Cold Test}
 
-\begin{table}[H]
+\subsection{Marco teórico}
+
+La señal de un objeto celeste recibida por un radiotelescopio debe pasar por la atmósfera antes de llegar al receptor de la antena. Las turbulencias atmosféricas distorsionan la señal dando lugar a un error sistemático que no depende del telescopio. El receptor tiene corrientes internas y fenómenos de transporte de electrones y fotones con ondas estacionarias que aumentan la entropía y generan también un error sistemático correspondiente a ruido blanco.
+
+El ruido blanco del receptor se puede disminuir al aumentar el tiempo de integración pues la señal del cielo permanece constante y la señal del receptor disminuye relativamente su tamaño, por lo que disminuir el ruido permite disminuir el tiempo invertido para detectar una señal astronómica y a la vez permite no empeorar la señal.
+
+Una manera común de eliminar errores sistemáticos es mediante la calibración del instrumento de medición.
+
+El método Hot--Cold Test permite calibrar el telescopio al caracterizar la temperatura de ruido del receptor mediante dos cargas cuyas temperaturas son conocidas y diferentes.
+
+Una carga es un material absorbente adherido a un pedazo de madera con un mango. El material es un absorbente electromagnético que absorbe la radiación con muy poca reflexión por lo que se supone como cuerpo negro. %Si no fuera así, se formaría una onda estacionaria en la antena y las mediciones estarían fuertemente influidas por la posición de la carga
+
+Sea $T_\textnormal{rec}$ la temperatura de ruido del receptor y $G_\textnormal{rec}$ la ganancia del receptor. Una carga a temperatura ambiente $T_\textnormal{hot}$ se pone enfrente de la bocina de la antena, permitiendo medir una potencia espectral $W_\textnormal{hot}$ dada por,
+\begin{equation}
+W_\textnormal{hot}=G_\textnormal{rec}kT_\textnormal{rec}+G_\textnormal{rec}kT_\textnormal{hot}
+,\end{equation}
+donde $k$ es la constante de Boltzmann. Análogamente, para una carga fría a temperatura $T_\textnormal{cold}$, la potencia espectral medida es,
+\begin{equation}
+W_\textnormal{cold}=G_\textnormal{rec}kT_\textnormal{rec}+G_\textnormal{rec}kT_\textnormal{cold}
+.\end{equation}
+Se define el factor $Y$ como el cuociente entre la medición de la potencia espectral para la carga caliente y para la fría,
+\begin{equation}
+Y=\frac{W_\textnormal{hot}}{W_\textnormal{cold}}\label{eq:yfactor}
+,\end{equation}
+que permite determinar la temperatura de ruido del receptor mediante variables medidas,
+\begin{equation}
+T_\textnormal{rec}=\frac{T_\textnormal{hot}-YT_\textnormal{cold}}{Y-1}\label{eq:trec}
+.\end{equation}
+
+En términos de operación del telescopio, la medición de $T_\textnormal{rec}$ se hace cada día que es observa, por lo que en una campaña de meses se tiene que hacer todos los días la medición. Esta constante medición corresponde a un chequeo del estado de la electrónica del telescopio pues si repentinamente difiere mucho la temperatura de ruido del receptor con respecto a la medición del día anterior es porque está funcionando mal y se debe arreglar. En realidad se usa la potencia por canales de frecuencia y no la potencia espectral de todo el ancho de banda, tal como se describe en la sección \ref{sec:calibracion}, por lo que la temperatura de ruido del receptor cambia con la frecuencia.
+
+
+\subsection{Datos y metodología}
+
+Esta calibración utiliza una carga caliente a temperatura ambiente en la cúpula del radiotelescopio MINI y una carga fría a temperatura de nitrógeno líquido, cuyas mediciones están en la tabla \ref{tab:hotcoldtest}.
+
+El MINI es pequeño, permitiendo acceder a la bocina por una escalera. Se sube y se pone la carga caliente enfrente de la bocina procurando apuntar el material absorbente a ella. Mediante un \textit{powermeter} se mide la potencia integrada de la señal para todo el ancho de banda que tiene el receptor y se anota la lectura en la tabla \ref{tab:hotcoldtest}.
+
+A continuación y análogamente, se pone la carga fría enfrente de la bocina y se mide la potencia espectral con el \textit{powermeter} pero esperando a que la lectura correspondiente converja tras disminuir la temperatura. Esta medición está en la tabla \ref{tab:hotcoldtest}.
+
+\begin{table}[htbp]
+	\centering
 	\begin{tabular}{
 			@{}
 			l
@@ -20,5 +61,24 @@
 		Cold & 77 & -47.94 \\
 		\bottomrule
 	\end{tabular}
-	\caption{Hot--Cold Test}\label{tab:hotcoldtest}
+	\caption{Temperatura y potencia medidas para las cargas del Hot--Cold Test}\label{tab:hotcoldtest}
 \end{table}
+
+El \textit{powermeter} entrega potencias en decibelio-milivatio (\si{\dBm}), que es una escala logarítmica acorde a las eventuales amplificaciones y disminuciones de las señales. Una potencia $W$ en escala logarítmica de \si{\dBm} se convierte en una potencia $P$ en escala lineal de \si{\watt} como se muestra a continuación,
+\begin{equation}
+P=10^{\frac{W-3}{10}}\label{eq:dbm2w}
+.\end{equation}
+
+\subsection{Cálculo de $T_\textnormal{rec}$}
+
+Se convierten las potencias de la tabla \ref{tab:hotcoldtest} a vatios según la ecuación \ref{eq:dbm2w} y se calcula $Y$ según la ecuación \ref{eq:yfactor}, obteniendo $Y=\num{2.2}$. Esto permite usar la ecuación \ref{eq:trec} para obtener $T_\textnormal{rec}=\SI{107.6}{\kelvin}$. Este cálculo se desarrolla en el código \ref{cod:hotcoldtest}.
+
+\subsection{Comparación con calibración del MINI}\label{sec:calibracion}
+
+El software del MINI tiene el comando \texttt{hct} para ingresar todo el sistema a una subrutina del Hot--Cold Test. Se usan cargas las mismas temperaturas de la talba \ref{tab:hotcoldtest}.
+
+El sistema espera a que se ponga la carga caliente en la bocina del receptor y se marca la medición al presionar una botonera, permitiendo tener una potencia por cada canal de frecuencia de la señal, mostrando una variación en todo el espectro. Ahora se pone la carga fría y se apreta la botonera, midiendo una potencia por cada canal que también varía en todo el espectro pero que es menor.
+
+Se usan los dos vectores de potencia para calcular el factor Y según la ecuación \ref{eq:yfactor} y luego la temperatura de ruido del receptor por canal según la ecuación \ref{eq:trec}. Finalmente, se promedian las temperaturas de todos los canales, resultando una temperatura de ruido del receptor de $T_\textnormal{rec}'=\SI[separate-uncertainty=true]{150.9(46)}{\kelvin}$.
+
+Se aprecia que $\abs{T_\textnormal{rec}'-T_\textnormal{rec}}=\SI{43.3}{\kelvin}$.

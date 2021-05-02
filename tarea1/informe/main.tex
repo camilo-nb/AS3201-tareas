@@ -7,7 +7,10 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{hyperref}
+
 \usepackage{amsmath}
+\numberwithin{equation}{section}
+
 \usepackage{physics}
 
 \usepackage{siunitx}
@@ -15,10 +18,13 @@
 \DeclareSIUnit{\dBm}{\deci\belmilliwatt}
 \usepackage{booktabs}
 \usepackage{scrextend}
+\def\tablename{Tabla}
+
+\input{listings.tex}
 
 \title{Informe Instrumentación Astronómica}
 \author{Camilo Núñez Barra}
-\def\github{camilo-nb}
+
 
 \begin{document}
 \begin{figure}[H]
@@ -32,7 +38,7 @@
 	RUT:&20.533.326-6\\
 	Profesor:&Leonardo Bronfman\\
 	Auxiliar:&Paulina Palma\\
-	Curso:&AS3201-1 Astronomía Experimental\\
+	Curso:&AS3201 Astronomía Experimental\\
 	Fecha:&\today
 \end{tabular}
 

@@ -14,8 +14,8 @@ print("ln(deltaW) = -sec(z) * {} + {}". format(*p.coefficients))
 plt.rcParams.update({'font.size': 7})
 fig, ax = plt.subplots(figsize=(3.25, 3.25))
 
-ax.plot(_secz, p(_secz), label="y = {1:.3f} + x * {0:.3f}".format(*p.c), color="tab:blue")
-ax.plot(_secz, lndP, label="Datos", marker='x', fillstyle="none", linestyle="", color="tab:red")
+ax.plot(_secz, p(_secz), label="y = {1:.3f} + x * {0:.3f}".format(*p.c), color="red")
+ax.plot(_secz, lndP, label="Datos", marker='x', fillstyle="none", linestyle="", color="green")
 ax.legend()
 
 ax.set_xlabel(r"$-\sec(\varphi)$")

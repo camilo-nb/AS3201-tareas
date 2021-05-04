@@ -111,7 +111,7 @@ axbii.tick_params(direction="in")
 fig.savefig("../informe/tmax.pdf")
 plt.show()
 
-Tint = scipy.integrate.trapz(T, axis=1).reshape((5, 3)).mean(axis=1)
+Tint = -scipy.integrate.simpson(T, v, axis=1).reshape((3, 5)).T.mean(axis=1)
 fig = plt.figure(figsize=(3.25, 3.25))
 p = np.poly1d(np.polyfit(lii[0:5][[1, 2, 3]], np.log(Tint[[1, 2, 3]]), 2))
 heightlii = np.exp(p.c[2]-p.c[1]*p.c[1]/(4*p.c[0]))

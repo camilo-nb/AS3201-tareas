@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def dBm2W(W):
     """Converts an arbitrary power `W` in dBm to W."""
     return 10 ** ((W - 3) / 10)

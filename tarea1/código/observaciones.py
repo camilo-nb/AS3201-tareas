@@ -5,7 +5,6 @@ import itertools
 import numpy as np
 import scipy.optimize
 import scipy.integrate
-import astropy.stats
 import matplotlib.pyplot as plt
 
 paths = sorted(glob.glob("../sec_mierc_sem1_2021/sdf*"))
@@ -113,6 +112,11 @@ axbii.tick_params(direction="in")
 fig.savefig("../informe/tmax.pdf")
 plt.show()
 
+print("Data: Tmax = {}, lii = {}". format(Tmax[2], lii[2]))
+print("Model: Tmax = {}, lii = {}". format(ylii.max(), xlii[np.argmax(ylii)]))
+print("Data: Tmax = {}, bii = {}". format(Tmax[2], bii[2]))
+print("Model: Tmax = {}, bii = {}". format(ybii.max(), xbii[np.argmax(ybii)]))
+
 Tint = -scipy.integrate.simpson(T, v, axis=1).reshape((3, 5)).T.mean(axis=1)
 fig = plt.figure(figsize=(3.25, 3.25))
 p = np.poly1d(np.polyfit(lii[0:5][[1, 2, 3]], np.log(Tint[[1, 2, 3]]), 2))
@@ -154,8 +158,8 @@ axbii.tick_params(direction="in")
 fig.savefig("../informe/tint.pdf")
 plt.show()
 
-masked = astropy.stats.sigma_clip(T, axis=1, maxiters=None)
-rms = np.sqrt(masked.mean(axis=1)**2).reshape((3, 5)).T
-meanmasked = astropy.stats.sigma_clip((T[0:5]+T[5:10]+T[10:15])/3, axis=1, maxiters=None)
-rmsmean = np.sqrt(meanmasked.mean(axis=1)**2)
-print(rms / rmsmean.reshape((5, 1)))
+rms = np.sqrt(T.mean(axis=1)**2).reshape((3, 5)).T
+rmsmean = np.sqrt(((T[0:5]+T[5:10]+T[10:15])/3).mean(axis=1)**2)
+print(rmsmean.reshape((5, 1)) / rms)
+print(1/np.sqrt(3))
+print(np.sqrt(2/3))

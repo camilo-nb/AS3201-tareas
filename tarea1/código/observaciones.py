@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import glob
 import itertools
 import numpy as np

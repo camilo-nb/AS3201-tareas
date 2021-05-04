@@ -5,6 +5,7 @@ import itertools
 import numpy as np
 import scipy.optimize
 import scipy.integrate
+import astropy.stats
 import matplotlib.pyplot as plt
 
 paths = sorted(glob.glob("../sec_mierc_sem1_2021/sdf*"))
@@ -151,3 +152,9 @@ axbii.yaxis.set_label_coords(1.11, 0.5)
 axbii.tick_params(direction="in")
 fig.savefig("../informe/tint.pdf")
 plt.show()
+
+masked = astropy.stats.sigma_clip(T, axis=1, maxiters=None)
+rms = np.sqrt(masked.mean(axis=1)**2).reshape((3, 5)).T
+meanmasked = astropy.stats.sigma_clip((T[0:5]+T[5:10]+T[10:15])/3, axis=1, maxiters=None)
+rmsmean = np.sqrt(meanmasked.mean(axis=1)**2)
+print(rms / rmsmean.reshape((5, 1)))

@@ -5,6 +5,7 @@ import itertools
 import numpy as np
 import scipy.optimize
 import scipy.integrate
+import astropy.stats
 import matplotlib.pyplot as plt
 
 paths = sorted(glob.glob("../sec_mierc_sem1_2021/sdf*"))
@@ -54,11 +55,13 @@ for j in range(3):
         axs[n-1].yaxis.set_tick_params(rotation=90)
         axs[n-1].tick_params(direction="in", top=True, right=True)
         popt, pcov = scipy.optimize.curve_fit(gaussian, v[5*j+i], T[5*j+i], p0=[20, 10, 1])
-        axs[n-1].plot(v[5*j+i], T[5*j+i], color="green", drawstyle="steps-mid", linestyle="-", linewidth=0.5)
-        axs[n-1].plot(v[5*j+i], gaussian(v[5*j+i], *popt), color="red", drawstyle="default", linestyle="-", linewidth=0.5)
+        axs[n-1].plot(v[5*j+i], T[5*j+i], c="green", drawstyle="steps-mid", ls="-", lw=0.5)
+        axs[n-1].plot(v[5*j+i], gaussian(v[5*j+i], *popt), c="red", ls="-", lw=0.5)
         Tmax[i, j] = T[5*j+i].max()
-        plt.text(0.3, 0.85, r"$l^{II}=$"+f"{lii[5*j+i]:.2f}", fontsize=5, ha='center', va='center', transform=axs[n-1].transAxes)
-        plt.text(0.3, 0.75, r"$b^{II}=$"+f"{bii[5*j+i]:.2f}", fontsize=5, ha='center', va='center', transform=axs[n-1].transAxes)
+        plt.text(0.3, 0.85, r"$l^{II}=$"+f"{lii[5*j+i]:.2f}", fontsize=5,
+                 ha='center', va='center', transform=axs[n-1].transAxes)
+        plt.text(0.3, 0.75, r"$b^{II}=$"+f"{bii[5*j+i]:.2f}", fontsize=5,
+                 ha='center', va='center', transform=axs[n-1].transAxes)
     axs[8-1].set_xlabel(r"Velocidad [km/s]")
     axs[4-1].set_ylabel(r"Temperatura [K]")
     plt.subplots_adjust(wspace=0, hspace=0)
@@ -158,8 +161,10 @@ axbii.tick_params(direction="in")
 fig.savefig("../informe/tint.pdf")
 plt.show()
 
-rms = np.sqrt(T.mean(axis=1)**2).reshape((3, 5)).T
-rmsmean = np.sqrt(((T[0:5]+T[5:10]+T[10:15])/3).mean(axis=1)**2)
-print(rmsmean.reshape((5, 1)) / rms)
-print(1/np.sqrt(3))
-print(np.sqrt(2/3))
+masked = astropy.stats.sigma_clip(T, axis=1, sigma=3, maxiters=None)
+rms = np.sqrt((masked**2).mean(axis=1)).reshape((3, 5)).T
+meanmasked = astropy.stats.sigma_clip((T[0:5]+T[5:10]+T[10:15])/3, sigma=3, axis=1, maxiters=None)
+rmsmean = np.sqrt((meanmasked**2).mean(axis=1))
+print("deltaT_A/T_sys =", rmsmean.reshape((5, 1)) / rms)
+print("1/sqrt(3) =", 1/np.sqrt(3))
+print("sqrt(2/3) =", np.sqrt(2/3))

@@ -7,7 +7,7 @@ La nebulosa de Orión, también conocida como Messier 42, M42, o NGC 1976, es un
 
 \begin{figure}[p]
 	\centering
-	%\includegraphics[width=3.25in]{m42.jpg}
+	\includegraphics[width=3.25in]{m42.jpg}
 	\caption{Nebulosa de Orión (Imagen: NASA)}
 	\label{fig:m42}
 \end{figure}
@@ -109,7 +109,11 @@ pero en la práctica hay un factor $C_\textnormal{obs}$ que depende del modo de 
 ,\end{equation}
 donde la constante observacional $C_\textnormal{obs}$ para el modo \textit{position switching}, que apunta tanto a la fuente como fuera de esta, es igual a $\sqrt{2}$.
 
-Se calcula el error RMS del ruido para cada uno de los quince espectros y se calcula el error RMS del ruido para cada uno de los cinco nuevos espectros. Los resultados se muestran en la tabla \ref{tab:rms}.
+Por un lado, se utiliza la técnica de \textit{sigma clipping} para obtener la base de ruido de los espectros y eliminar la línea de emisión para el siguiente cálculo, utilizando $\sigma=3$ y las iteraciones necesarias hasta que el algoritmo converja. Se calcula el error RMS del ruido para cada uno de los quince espectros.
+
+Por otro lado, se promedian los espectros correspondientes a la misma coordenada en la cruz. Se les aplica la técnica de \textit{sigma clipping} con los mismos parámetros anteriores. Se calcula el error RMS del ruido para cada uno de los cinco nuevos espectros.
+
+Los resultados se muestran en la tabla \ref{tab:rms}, que tiene los valores $\Delta T_\textnormal{A}/T_\textnormal{sys}$.
 
 La ecuación \ref{eq:rms} y la cantidad de datos promediados establecen que el cuociente teórico entre el error del promedio y el error de una muestra única es $1/\sqrt{3}=0.577$, pero si se considera la constante observacional entonces es $\sqrt{2}/\sqrt{3}=0.816$.
 
@@ -133,10 +137,11 @@ La ecuación \ref{eq:rms} y la cantidad de datos promediados establecen que el c
 		{Derecha} &
 		{Abajo} \\
 		\midrule
-		Primera & 0.979 & 1.035 & 1.020 & 0.971 & 1.101 \\
-		Segunda & 1.006 & 1.038 & 0.998 & 0.963 & 0.991 \\
-		Tercera & 1.014 & 0.933 & 0.981 & 1.071 & 0.923 \\
+		Primera & 0.583 & 0.573 & 0.579 & 0.555 & 0.552 \\
+		Segunda & 0.621 & 0.601 & 0.640 & 0.628 & 0.593 \\
+		Tercera & 0.637 & 0.619 & 0.626 & 1.084 & 0.599 \\
 		\bottomrule
 	\end{tabular}
-	\caption{Cuociente entre error de los puntos de la cruz promediados y error de los puntos sin promediar}\label{tab:rms}
+	\caption{Cociente entre error de los puntos de la cruz promediados y error de los puntos sin promediar}\label{tab:rms}
 \end{table*}
+

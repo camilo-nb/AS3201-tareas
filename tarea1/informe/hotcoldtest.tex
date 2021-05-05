@@ -2,9 +2,9 @@
 
 \subsection{Marco teórico}
 
-La señal de un objeto celeste recibida por un radiotelescopio se refleja en sus discos parabólicos para llegar al receptor espectrógrafo. El receptor tiene corrientes internas y fenómenos de transporte de electrones y fotones con ondas estacionarias que aumentan la entropía y generan también un error sistemático correspondiente a ruido blanco.
+La señal de un objeto celeste recibida por un radiotelescopio se refleja en sus discos parabólicos para llegar al receptor espectrógrafo. El receptor tiene corrientes internas y fenómenos de transporte de electrones y fotones con ondas estacionarias que aumentan la entropía y generan un error sistemático correspondiente a ruido blanco.
 
-El ruido blanco del receptor se puede disminuir al aumentar el tiempo de integración pues la señal del cielo permanece constante y la señal del receptor disminuye relativamente su tamaño, por lo que disminuir el ruido permite disminuir el tiempo invertido para detectar una señal astronómica y a la vez permite no empeorar la señal.
+El ruido blanco del receptor se puede disminuir al aumentar el tiempo de integración pues la señal del cielo permanece constante y la señal del receptor disminuye relativamente su tamaño, por lo que disminuir el ruido permite disminuir el tiempo invertido para detectar una señal astronómica, y a la vez permite no empeorar la señal. Además, se debe considerar que las horas de observación de un telescopio son muy costosas, por lo que es preferible minimizarlas.
 
 Una manera común de eliminar errores sistemáticos es mediante la calibración del instrumento de medición.
 
@@ -28,9 +28,13 @@ que permite determinar la temperatura de ruido del receptor mediante variables m
 \begin{equation}
 T_\textnormal{rec}=\frac{T_\textnormal{hot}-YT_\textnormal{cold}}{Y-1}\label{eq:trec}
 .\end{equation}
+Se aprecia que un valor de $Y$ grande significa un $T_\textnormal{rec}$ pequeño, por lo que el receptor es más sensible, mientras que un valor cercano a la unidad significa que no es capaz de distinguir entre cargas calientes y frías, considerando que las cargas de referencia tienen temperaturas lo suficientemente disntantes.
 
-En términos de operación del telescopio, la medición de $T_\textnormal{rec}$ se hace cada día que es observa, por lo que en una campaña de meses se tiene que hacer todos los días la medición. Esta constante medición corresponde a un chequeo del estado de la electrónica del telescopio pues si repentinamente difiere mucho la temperatura de ruido del receptor con respecto a la medición del día anterior es porque está funcionando mal y se debe arreglar. En realidad se usa la potencia por canales de frecuencia y no la potencia espectral de todo el ancho de banda, tal como se describe en la sección \ref{sec:calibracion}, por lo que la temperatura de ruido del receptor cambia con la frecuencia.
+En términos de operación del telescopio, la medición de $T_\textnormal{rec}$ se hace cada día que es observa, por lo que en una campaña de meses se tiene que hacer todos los días la medición. Esta constante medición corresponde a un chequeo del estado de la electrónica del telescopio pues si repentinamente difiere mucho la temperatura de ruido del receptor con respecto a la medición del día anterior es porque está funcionando mal y se debe arreglar.
 
+Una propuesta astronómica debe establecer las horas necesarias de observación y para eso es necesario conocer la temperatura típica de ruido que determina el tiempo de la precisión.
+
+En realidad, un radiotelescopio mide la potencia por canales de frecuencia y no la potencia espectral de todo el ancho de banda, tal como se describe en la sección \ref{sec:calibracion}, por lo que la temperatura de ruido del receptor cambia con la frecuencia.
 
 \subsection{Datos y metodología}
 

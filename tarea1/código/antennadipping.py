@@ -25,5 +25,5 @@ ax.set_ylabel(r"$\ln(\Delta W)$")
 ax.yaxis.set_tick_params(rotation=90)
 ax.tick_params(direction="in", top=True, right=True)
 
-fig.savefig("../informe/taufit.pdf")
+fig.savefig("../informe/rsc/taufit.pdf")
 plt.show()

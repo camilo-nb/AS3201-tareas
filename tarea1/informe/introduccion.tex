@@ -20,7 +20,7 @@ La sección \ref{sec:observaciones} introduce el objeto celeste observado, junto
 
 Finalmente, la sección \ref{sec:conclusiones} presenta las conclusiones del informe, estableciendo que las calibraciones son importantes para mejorar la precisión de instrumento y que los datos del experimento pudieron ser afectador por factores climáticos pues presentar error.
 
-Además, la sección \ref{sec:anexo} es un anexo con los códigos utilizados para los cálculos y gráficos.
+Además, la sección \ref{sec:anexo} es un anexo con los códigos utilizados para los cálculos y gráficos, que también están disponibles en \url{https://github.com/camilo-nb/AS3201-tareas/tree/main/tarea1}.
 
 \subsection{El radiotelescopio}\label{sec:radiotelescopio}
 
@@ -38,6 +38,14 @@ Los experimentos de este informe se realizan gracias a las mediciones hechas por
 
 Este telescopio se denomina MINI por su pequeño tamaño. Está en su propio domo en el Observatorio Astronómico Nacional, en la cima del cerro Calán. Su antena tiene un diámetro de \SI{1.2}{\meter}. Tiene instalado un amplificador HEMT (High Electro Mobility Transistor) en la primera etapa de recepción que proporciona una mejor relación señal a ruido. Tiene dos espectrómetros de banco de filtros con 256 canales cada uno, que captan ondas electromagnéticas con frecuencias d \SI{86}{\giga\hertz} a \SI{115}{\giga\hertz}, con resoluciones respectivas de \SI{0.1}{\mega\hertz} y \SI{1}{\mega\hertz}.
 
+\subsection{Espectros de absorción}
+
+La potencia recibida (ecuación \ref{eq:w}) se puede recolectar a través de todos los canales del radiotelescopio, cada uno con una resolución determinada y un ancho de banda respectivo, permitiéndo graficarla en lo que se denomina espectro de absorción, como el que muestra la figura \ref{fig:spectrum}, que es para la luz visible pero sigue siendo ilustrativo para cualquiera. Las frecuencias o longitudes de ondas, adicionando su corrimiento debido al efecto Doppler, se pueden interpretar como velocidades radiales.
+
+Una línea de absorción corresponde a un mínimo local preponderante en la curva del espectro y se producen porque los átomos en la línea de visión de la fuente se interponen en los fotones y absorben la energía para excitar sus electrones. Un ejemplo de absorción ocurre en las nubes de hidrógeno, que tienen temperaturas frías, y suelen indicar formación de estrellas. Se denomina continuo al espectro sin líneas de absorción.
+
+Una línea de emisión corresponde a un máximo local preponderante en la curva del espectro y se produce por los fotones emitidos por las fuentes y los átomos que las componente. Un ejemplo de emisión ocurre en los cuásares y el hidrógeno que producen, estando a una muy alta temperatura.
+
 \begin{figure}[p]
 	\centering
 	\includegraphics[width=3.25in]{rsc/mini.jpg}
@@ -51,12 +59,3 @@ Este telescopio se denomina MINI por su pequeño tamaño. Está en su propio dom
 	\caption{Espectro de absorción de un cuásar distante (Imagen: Joe Liske, ESO)}
 	\label{fig:spectrum}
 \end{figure}
-
-\subsection{Espectros de absorción}
-
-La potencia recibida (ecuación \ref{eq:w}) se puede recolectar a través de todos los canales del radiotelescopio, cada uno con una resolución determinada y un ancho de banda respectivo, permitiéndo graficarla en lo que se denomina espectro de absorción, como el que muestra la figura \ref{fig:spectrum}, que es para la luz visible pero sigue siendo ilustrativo para cualquiera. Las frecuencias o longitudes de ondas, adicionando su corrimiento debido al efecto Doppler, se pueden interpretar como velocidades radiales.
-
-Una línea de absorción corresponde a un mínimo local preponderante en la curva del espectro y se producen porque los átomos en la línea de visión de la fuente se interponen en los fotones y absorben la energía para excitar sus electrones. Un ejemplo de absorción ocurre en las nubes de hidrógeno, que tienen temperaturas frías, y suelen indicar formación de estrellas. Se denomina continuo al espectro sin líneas de absorción.
-
-Una línea de emisión corresponde a un máximo local preponderante en la curva del espectro y se produce por los fotones emitidos por las fuentes y los átomos que las componente. Un ejemplo de emisión ocurre en los cuásares y el hidrógeno que producen, estando a una muy alta temperatura.
-

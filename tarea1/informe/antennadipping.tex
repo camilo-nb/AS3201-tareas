@@ -36,7 +36,7 @@ que es una relación lineal de $\ln(\Delta W)$ con respecto a ${-\sec\left(z\rig
 Se utiliza una carga caliente a temperatura ambiente en la cúpula del radiotelescopio MINI, midiendo la potencia que muestra Domo en la tabla \ref{tab:taufit}.
 
 Se mide con un \textit{powermeter} la potencia espectral de diez puntos a distintas elevaciones y azimut fijo, entregando los resultados de la tabla \ref{tab:taufit}.
-\begin{table}[htbp]
+\begin{table}[p]
 	\centering
 	\begin{tabular}{
 			@{}
@@ -71,9 +71,9 @@ Se mide con un \textit{powermeter} la potencia espectral de diez puntos a distin
 
 \subsection{Cálculo de $\tau_\textnormal{w}$}
 
-El siguiente procedimiento corresponde al código \ref{cod:antennadipping}. Se lee el archivo \texttt{antdip\_AE2021A} provisto por el equipo docente con los datos necesarios para realizar el ajuste lineal según la ecuación \ref{eq:taufit}. El gráfico de este se muestra en la figura \ref{fig:taufit}. La pendiente de la recta establece un valor de \num{0.2573501} para la opacidad cenital debido al contenido de agua en la atmósfera.
+El siguiente procedimiento corresponde al código \ref{cod:antennadipping}. Se lee el archivo \texttt{antdip\_AE2021A} provisto por el equipo docente con los datos necesarios para realizar el ajuste lineal según la ecuación \ref{eq:taufit}. El gráfico de este se muestra en la figura \ref{fig:taufit}. La pendiente de la recta establece un valor de \num{0.257} para la opacidad cenital debido al contenido de agua en la atmósfera.
 
-\begin{figure}[htbp]
+\begin{figure}[p]
 	\centering
 	\includegraphics{taufit.pdf}
 	\caption{Equis roja es medición del telescopio. Línea azul es ajuste lineal. La pendiente es $\tau_\textnormal{w}$}
@@ -92,6 +92,6 @@ La información recolectada corresponde a la diferencia de potencia de la ecuaci
 
 Tras medir los diez puntos, automáticamente el telescopio apunta al domo y toma una medición de referencia con la carga caliente. A continuación, se debe ingresar la temperatura actual y la humedad relativa, además de un parámetro cualitativo de \num{0} a \num{3} que indica el grado de cobertura del cielo debido a las nubes y sirve para el registro histórico.
 
-Finalmente, el software realiza el ajuste lineal y entrega el valor $\tau_\textnormal{w}'=\num{0.2573501}$, además de otros parámetros como la estimación de la eficiencia del telescopio y la temperatura de brillo del agua en el cielo.
+Finalmente, el software realiza el ajuste lineal y entrega el valor $\tau_\textnormal{w}'=0.423\pm0.023$, además de otros parámetros como la estimación de la eficiencia del telescopio y la temperatura de brillo del agua en el cielo.
 
-Se aprecia que $\tau_\textnormal{w}=\tau_\textnormal{w}'$.
+Se aprecia que $\abs{\tau_\textnormal{w}-\tau_\textnormal{w}'}=0.166\pm0.023$.

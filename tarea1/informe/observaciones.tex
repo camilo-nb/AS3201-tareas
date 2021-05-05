@@ -101,11 +101,11 @@ Se calcula la temperatura integrada del espectro para cada una de las quince obs
 
 Sea $\Delta T_\textnormal{A}$ el error total para $N$ muestras promediadas, $T_\textnormal{sys}$ el error para una única muestra, $\tau$ el tiempo total, $\Delta\nu$ el ancho de banda. La estadística gaussiana establece la siguiente relación entre el error para las muestras promediadas y el error para una única muestra,
 \begin{equation}
-\Delta T_\textnormal{A}=\frac{T_\textnormal{sys}}{\sqrt{N}}=\frac{T_\textnormal{sys}}{\sqrt{\tau\Delta\nu}}\label{eq:rms}
+\Delta T_\textnormal{A}=\frac{T_\textnormal{sys}}{\sqrt{N}}=\frac{T_\textnormal{sys}}{\sqrt{\tau\Delta\nu}}\label{eq:rms1}
 ,\end{equation}
 pero en la práctica hay un factor $C_\textnormal{obs}$ que depende del modo de observación,
 \begin{equation}
-\Delta T_\textnormal{A}=\frac{C_\textnormal{obs}T_\textnormal{sys}}{\sqrt{N}}=\frac{C_\textnormal{obs}T_\textnormal{sys}}{\sqrt{\tau\Delta\nu}}\label{eq:rms}
+\Delta T_\textnormal{A}=\frac{C_\textnormal{obs}T_\textnormal{sys}}{\sqrt{N}}=\frac{C_\textnormal{obs}T_\textnormal{sys}}{\sqrt{\tau\Delta\nu}}\label{eq:rms2}
 ,\end{equation}
 donde la constante observacional $C_\textnormal{obs}$ para el modo \textit{position switching}, que apunta tanto a la fuente como fuera de esta, es igual a $\sqrt{2}$.
 
@@ -115,7 +115,7 @@ Por otro lado, se promedian los espectros correspondientes a la misma coordenada
 
 Los resultados se muestran en la tabla \ref{tab:rms}, que tiene los valores $\Delta T_\textnormal{A}/T_\textnormal{sys}$.
 
-La ecuación \ref{eq:rms} y la cantidad de datos promediados establecen que el cuociente teórico entre el error del promedio y el error de una muestra única es $1/\sqrt{3}=0.577$, pero si se considera la constante observacional entonces es $\sqrt{2}/\sqrt{3}=0.816$.
+La ecuación \ref{eq:rms1} y la cantidad de datos promediados establecen que el cuociente teórico entre el error del promedio y el error de una muestra única es $1/\sqrt{3}=0.577$, pero si se considera la constante observacional entonces es $\sqrt{2}/\sqrt{3}=0.816$.
 
 \begin{table*}[htbp]
 	\centering

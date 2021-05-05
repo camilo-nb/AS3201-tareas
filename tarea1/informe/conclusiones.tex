@@ -1,3 +1,17 @@
+\newpage
+
 \section{Conclusiones}\label{sec:conclusiones}
 
-Se concluye gracias a tabla \ref{tab:taufit} que, a menor elevación, mayor es la potencia, pues la cantidad de atmósfera que se observa y, por lo tanto, su cantidad de emisión observada, es también mayor. 
+En primer lugar, para el siguiente análisis se debe considerar que los datos provistos en archivos por el equipo docente corresponden a mediciones diferentes de las experiencias prácticas virtuales vistas por sus estudiantes, por lo que necesariamente cambian las condiciones del experimento y hay lugar a error. Se propone desde ya como mejora a este informe realizar una comparación con los datos correspondientes bajo la supervisión presencial en el radiotelescopio MINI.
+
+Se concluye que la temperatura de ruido del receptor calculada para el radiotelescopio MINI, en las condiciones del experimento, cambia en un $31\%$ con respecto a la calibración propia del \textit{software}, lo que se puede considerar dentro de un rango aceptable para este parámetro.
+
+La tabla \ref{tab:taufit} permite concluir que, a menor elevación, mayor es la potencia, pues la cantidad de atmósfera que se observa y, por lo tanto, su cantidad de emisión observada, es también mayor.
+
+La opacidad calculada de la atmósfera difiere demasiado con respecto a la calibración propia del \textit{software} del telescopio, y se puede explicar porque un repentino cambio en el clima, tal como, por ejemplo, una nube, puede cambiar la opacidad de la atmósfera. Además, el modelo del \textit{software} tiene acceso a las mediciones por canal de ancho de banda y de por sí es más complejo, pues considera parámetros como humedad relativa, que son despreciados en la teoría del informe.
+
+Las figuras \ref{fig:specfit1}, \ref{fig:specfit2} y \ref{fig:specfit3} muestran una alta relación señal a ruido, que se explica por la calibración hecha con los parámetros anteriores, junto con su correcta interpretación, pues permiten mejorar la precisión del radiotelescopio MINI al reducir el ruido, y por el tiempo de observación prolongado escogido. Estas figuras presentan una clara emisión en la nebulosa de Orión pues hay un gran pico en la temperatura, pero con la teoría provista en este curso no se puede saber \textit{a priori} los átomos emisores.
+
+Las figuras \ref{fig:tmax} y \ref{fig:tint} muestran que el \textit{pointing} del MINI es aceptable para este experimento, pues la coordenada central de la cruz de observación es muy cercana al pico de temperatura de la fuente, que coincide con su centro y es la dirección hacia la que se ordena apuntar. Existe un pequeño error que se cree es debido a la tolerancia que permite el sistema de \textit{tracking} del radiotelescopio. Además, las temperaturas integradas permiten calcular la masa de la nube molecular pero los conocimiento provistos hasta ahora por este curso no permiten calcularla.
+
+Finalmente, la tabla \ref{tab:rms} muestra que, por un lado, para la primera pasada por la cruz, el modelo teórico del error RMS coincide con las mediciones, pudiendo corroborar la relación $1/\sqrt{N}$ para este caso particular de tres datos promediados. Sin embargo, el método de observación sugiere que haya un factor adicional de $\sqrt{2}$ que no tiene lugar en los resultados. Por otro lado, la segunda pasada, que es temporalmente posterior a la primera pasada, tiene una mayor diferencia en el modelo teórico, y la tercera pasada resalta aún más esta diferencia, pero estos resultados tampoco se pueden explicar por la constante observacional de \textit{position switching}, por lo que se cree que un factor climático influyó fuertemente en las mediciones, como, por ejemplo, una nube moviéndose por la línea de visión.

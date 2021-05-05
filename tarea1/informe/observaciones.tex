@@ -75,22 +75,24 @@ Se miden 256 temperatura en kelvin a distintas velocidades, formando un espectro
 
 Se calcula la temperatura máxima del espectro para cada una de las quince observaciones. Se promedian las temperaturas correspondientes a las mismas coordenadas en la cruz y se realizan dos ajustes gaussianos, tal como muestra la figura \ref{fig:tmax}. El primer ajuste es a través de la longitud galáctica, manteniendo la latitud galáctica fija, es decir, sobre los tres puntos horizontales de la cruz. El segundo ajuste es a través de la latitud galáctica, manteniendo la longitud galáctica fija, es decir, sobre los tres puntos verticales de la cruz.
 
-\begin{figure}[p]
+El punto central de la cruz tiene una temperatura máxima de \SI{29.215}{\kelvin} a longitud galáctica \SI{208.006}{\degree} y latitud galáctica \SI{-19.385}{\degree}, mientras que el modelo del ajuste gaussiano a latitud fija establece un máximo de \SI{29.485}{\kelvin} a longitud \SI{208.975}{\degree} y el ajuste gaussiano a longitud fija establece un máximo de \SI{29.989}{\kelvin} a latitud \SI{-19.357}{\degree}.
+
+A pesar de que el telescopio tenía ordenado apuntar a la coordenada precisa de la nebulosa de Orión, existe un error que se puede calibrar. Además, el software del telescopio tiene una ventana de tracking que muestra que tiene permitido apuntar dentro de un radio de tolerancia de la coordenada objetivo.
+
+\subsection{Temperatura integrada}
+
+La temperatura integrada en velocidad permite obtener $W_\textnormal{CO}$, que es proporcional a la densidad de columna de hidrógeno molecular, que permite calcular la masa total de una nube molecular compuesta mayoritariamente de hidrógeno.
+
+Se calcula la temperatura integrada del espectro para cada una de las quince observaciones. Se promedian las temperaturas correspondientes a las mismas coordenadas en la cruz y se realizan dos ajustes gaussianos, tal como muestra la figura \ref{fig:tint}. El primer ajuste es a través de la longitud galáctica, manteniendo la latitud galáctica fija, es decir, sobre los tres puntos horizontales de la cruz. El segundo ajuste es a través de la latitud galáctica, manteniendo la longitud galáctica fija, es decir, sobre los tres puntos verticales de la cruz.
+
+\begin{figure}[h]
 	\centering
 	\includegraphics{rsc/tmax.pdf}
 	\caption{Gráfico de temperatura máxima y su ajuste gaussiano. Línea roja es ajuste de los puntos a latitud fija y se mide en los ejes inferior e izquierdo. Línea verde es ajuste de los puntos a longitud fija y se mide en los ejes superior y derecho. Equis roja es medición en la cruz, en orden creciente de longitud: punto de arriba, centro y abajo. Equis verde es medición en la cruz, en orden creciente de latitud: punto de izquierda, centro y derecha.}
 	\label{fig:tmax}
 \end{figure}
 
-El punto central de la cruz tiene una temperatura máxima de \SI{29.215}{\kelvin} a longitud galáctica \SI{208.006}{\degree} y latitud galáctica \SI{-19.385}{\degree}, mientras que el modelo del ajuste gaussiano a latitud fija establece un máximo de \SI{29.485}{\kelvin} a longitud \SI{208.975}{\degree} y el ajuste gaussiano a longitud fija establece un máximo de \SI{29.989}{\kelvin} a latitud \SI{-19.357}{\degree}.
-
-Los datos anteriores muestra que el pointing del telescopio es aceptable, pues no hay diferencias de más de una unidad. A pesar de que el telescopio tenía ordenado apuntar a la coordenada precisa de la nebulosa de Orión, existe un error que se puede calibrar. Además, el software del telescopio tiene una ventana de tracking que muestra que tiene permitido apuntar dentro de un radio de tolerancia de la coordenada objetivo.
-
-\subsection{Temperatura integrada}
-
-Se calcula la temperatura integrada del espectro para cada una de las quince observaciones. Se promedian las temperaturas correspondientes a las mismas coordenadas en la cruz y se realizan dos ajustes gaussianos, tal como muestra la figura \ref{fig:tint}. El primer ajuste es a través de la longitud galáctica, manteniendo la latitud galáctica fija, es decir, sobre los tres puntos horizontales de la cruz. El segundo ajuste es a través de la latitud galáctica, manteniendo la longitud galáctica fija, es decir, sobre los tres puntos verticales de la cruz.
-
-\begin{figure}[p]
+\begin{figure}[h]
 	\centering
 	\includegraphics{rsc/tint.pdf}
 	\caption{Gráfico de temperatura integrada y su ajuste gaussiano. Línea roja es ajuste de los puntos a latitud fija y se mide en los ejes inferior e izquierdo. Línea verde es ajuste de los puntos a longitud fija y se mide en los ejes superior y derecho. Equis roja es medición en la cruz, en orden creciente de longitud: punto de arriba, centro y abajo. Equis verde es medición en la cruz, en orden creciente de latitud: punto de izquierda, centro y derecha.}

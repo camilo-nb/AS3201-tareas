@@ -17,6 +17,19 @@
 \DeclareSIUnit{\belmilliwatt}{Bm}
 \DeclareSIUnit{\dBm}{\deci\belmilliwatt}
 \DeclareSIUnit\lightyear{ly}
+\newcommand*{\ra}[2][]{{% extra pair of braces for solution 1, doesn't hurt for solution 2
+		%   \def\SIUnitSymbolDegree{\textsuperscript{h}}%     Solution 1
+		%   \def\SIUnitSymbolArcminute{\textsuperscript{m}}%  Solution 1
+		%   \def\SIUnitSymbolArcsecond{\textsuperscript{s}}%  Solution 1
+		\ang[
+		math-degree=\textsuperscript{h},             % Solution 2
+		text-degree=\textsuperscript{h},             % Solution 2
+		math-arcminute=\textsuperscript{m},          % Solution 2
+		text-arcminute=\textsuperscript{m},          % Solution 2
+		math-arcsecond=\textsuperscript{s},          % Solution 2
+		text-arcsecond=\textsuperscript{s},          % Solution 2
+		#1]{#2}%
+}}
 \usepackage{booktabs}
 \usepackage{scrextend}
 \def\tablename{Tabla}
@@ -27,14 +40,17 @@
 \title{Informe Instrumentación Astronómica}
 \author{Camilo Núñez Barra}
 
+\usepackage{long2}
 
 \begin{document}
+\longtwocolumn[{
 \begin{figure}[H]
 	\includegraphics[width=2in]{fcfm_das}
 \end{figure}
 \begin{center}
 	\textbf{\huge{INFORME\\INSTRUMENTACIÓN\\ASTRONÓMICA}}\\\,\\Tarea 1\\\,
 \end{center}
+\centering
 \begin{tabular}{rl}
 	Estudiante:&Camilo Núñez Barra\\
 	RUT:&20.533.326-6\\
@@ -43,6 +59,7 @@
 	Curso:&AS3201 Astronomía Experimental\\
 	Fecha:&\today
 \end{tabular}
+}]
 
 \input{introduccion.tex}
 \input{hotcoldtest.tex}

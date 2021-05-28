@@ -6,7 +6,6 @@ from astropy import units as u
 
 R0 = 8.5*u.kpc
 v0 = 220*u.km/u.s
-w0 = v0/R0.to(u.km)
 
 def get_values_from(header: fits.header.Header, axis: int) -> np.ndarray:
     """Get real coordinate values from `header` at `axis` instead of pixels."""

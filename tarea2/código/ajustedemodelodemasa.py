@@ -106,3 +106,33 @@ ax.yaxis.set_tick_params(rotation=90)
 ax.tick_params(direction="in", top=True, right=True)
 fig.savefig("../informe/rsc/spherepoint.pdf")
 plt.show()
+
+plt.rcParams.update({'font.size': 7})
+fig, ax = plt.subplots(figsize=(3.25, 3.25))
+
+
+ax.plot(R, vel(R, uniform_sphere_and_pointlike_mass_model(R, *popt_sphere_point)), c="tab:green", lw=1, label="Uniform Sphere + Point")
+ax.fill_between(R, vel(R, uniform_sphere_and_pointlike_mass_model(R, *(popt_sphere_point+perr_sphere_point))), vel(R, uniform_sphere_and_pointlike_mass_model(R, *(popt_sphere_point-perr_sphere_point))), facecolor="tab:green", alpha=0.25)
+
+ax.plot(R, vel(R, uniform_sphere_mass_model(R, *popt_sphere)), c="tab:brown", lw=1, label="Uniform Sphere")
+ax.fill_between(R, vel(R, uniform_sphere_mass_model(R, *(popt_sphere+perr_sphere))), vel(R, uniform_sphere_mass_model(R, *(popt_sphere-perr_sphere))), facecolor="tab:brown", alpha=0.25)
+
+ax.plot(R, vel(R, uniform_disk_and_pointlike_mass_model(R, *popt_disk_point)), c="tab:orange", lw=1, label="Uniform Disk + Point")
+ax.fill_between(R, vel(R, uniform_disk_and_pointlike_mass_model(R, *(popt_disk_point+perr_disk_point))), vel(R, uniform_disk_and_pointlike_mass_model(R, *(popt_disk_point-perr_disk_point))), facecolor="tab:orange", alpha=0.25)
+
+ax.plot(R, vel(R, uniform_disk_mass_model(R, *popt_disk)), c="tab:purple", lw=1, label="Uniform Disk")
+ax.fill_between(R, vel(R, uniform_disk_mass_model(R, *(popt_disk+perr_disk))), vel(R, uniform_disk_mass_model(R, *(popt_disk-perr_disk))), facecolor="tab:purple", alpha=0.25)
+
+ax.plot(R, vel(R, pointlike_mass_model(*popt_point)), c="tab:blue", lw=1, label="Point")
+ax.fill_between(R, vel(R, pointlike_mass_model(*(popt_point+perr_point))), vel(R, pointlike_mass_model(*(popt_point-perr_point))), facecolor="tab:blue", alpha=0.25)
+
+
+ax.plot(R, vtan, c='r', ls="", marker=".", markersize=1, label="Data")
+
+ax.legend(loc="lower right")
+ax.set_xlabel(r"$R_{\odot}\sin\,l$ [kpc]")
+ax.set_ylabel(r"$v_\tan$ [km/s]")
+ax.yaxis.set_tick_params(rotation=90)
+ax.tick_params(direction="in", top=True, right=True)
+fig.savefig("../informe/rsc/massmodels.pdf")
+plt.show()

@@ -28,7 +28,7 @@ b = get_values_from(header, 3)  # GLAT-FLT
 v_maximorum = np.zeros_like(l)
 b_v_maximorum = np.zeros_like(l)
 
-sigclip = SigmaClip(sigma_lower=5, sigma_upper=5, maxiters=None, cenfunc=np.mean, stdfunc=np.std)
+sigclip = SigmaClip(sigma_lower=3.5, sigma_upper=3.5, maxiters=None, cenfunc=np.mean, stdfunc=np.std)
 T_noise = sigclip(data, axis=2)
 rms = np.sqrt(np.mean(T_noise**2, axis=2))
 T_rms = np.repeat(rms[..., np.newaxis], len(v), axis=2)

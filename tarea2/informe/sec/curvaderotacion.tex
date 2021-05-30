@@ -46,7 +46,7 @@ Las velocidades rotacionales permitidas en la galaxia interna, en donde $R<R_\od
 
 \subsection{Detalle del algoritmo}
 
-La curva de rotación se deriva de las velocidades terminales del espectro de CO para cada longitud galáctica $l$. El cuarto cuadrante galáctico tiene emisión con corrimiento al azul, por lo tanto, se escogen las velocidades terminales más negativas posibles para cada espectro y que cumplan cierta condición que se explica a continuación. El procedimiento corresponde al código X.
+La curva de rotación se deriva de las velocidades terminales del espectro de CO para cada longitud galáctica $l$. El cuarto cuadrante galáctico tiene emisión con corrimiento al azul, por lo tanto, se escogen las velocidades terminales más negativas posibles para cada espectro y que cumplan cierta condición que se explica a continuación. El procedimiento corresponde al código \ref{cod:vrot}.
 
 Se utiliza la técnica de \textit{sigma clipping} para obtener la base de ruido de los espectros con un número de 5 desviaciones estándar para el límite de recorte tanto superior como inferior, además de las iteraciones necesarias para que el algoritmo converja. Suponiendo que el promedio del ruido se anula, entonces la temperatura de ruido o valor RMS del ruido es igual a la desviación estándar del mismo.
 

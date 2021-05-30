@@ -64,7 +64,7 @@ if __name__ == "__main__":
     
     w0 = v0/R0.to(u.km)
 
-    w = w0+vrot/R.to(u.km)
+    w = w0+(v_maximorum*u.km/u.s)/R.to(u.km)
 
     plt.rcParams.update({'font.size': 7})
     fig, ax = plt.subplots(figsize=(3.25, 3.25))

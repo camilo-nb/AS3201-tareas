@@ -10,7 +10,7 @@ R0 = 8.5*u.kpc
 v0 = 220*u.km/u.s
 
 def get_values_from(header: fits.header.Header, axis: int) -> np.ndarray:
-    """Get real coordinate values from `header` at `axis` instead of pixels."""
+    """Get real coordinate values instead of pixels from `header` at `axis`."""
     naxis = header[f"NAXIS{axis}"]  # number of pixels on `axis`
     crpix = header[f"CRPIX{axis}"]  # reference pixel for `axis`
     crval = header[f"CRVAL{axis}"]  # coordinate value at `crpix`

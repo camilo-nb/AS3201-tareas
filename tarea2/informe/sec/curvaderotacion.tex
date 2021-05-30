@@ -2,7 +2,7 @@
 
 \subsection{Marco teórico}
 
-Sea $P$ un punto a través de la línea de visión a longitud $l$ y de distancia galactocéntrica $R=R_\odot\sin l$. Se supone $P$ bajo un movimiento puramente circular con velocidad $\vec{v}(R)$, denominada velocidad rotacional, cuya componente a lo largo de la línea de visión, es decir, su velocidad radial medible a través del efecto Doppler, es $\vec{v}_\parallel$, formando un ángulo $\alpha$ entre ambas, por lo tanto, contrarrestando la velocidad del Sol $\vec{v}_\odot$ relativa a la línea de visión,
+Sea $P$ un punto a través de la línea de visión a longitud $l$ y de distancia galactocéntrica $R=R_\odot\sin l$. Se supone $P$ bajo un movimiento puramente circular con velocidad $v_\textnormal{rot}(R)$, denominada velocidad rotacional, cuya componente a lo largo de la línea de visión con respecto al LSR, es decir, su velocidad radial medible a través del efecto Doppler, es $v_\textnormal{LSR}$, formando un ángulo $\alpha$ entre ambas, por lo tanto, contrarrestando la velocidad del Sol $v_\odot$ relativa a la línea de visión,
 \begin{equation}
 v_\textnormal{LSR}(R)=v(R)\cos\alpha-v_\odot\sin l
 .\label{eq:vll}\end{equation}
@@ -48,7 +48,7 @@ Las velocidades rotacionales permitidas en la galaxia interna, en donde $R<R_\od
 
 La curva de rotación se deriva de las velocidades terminales del espectro de CO para cada longitud galáctica $l$. El cuarto cuadrante galáctico tiene emisión con corrimiento al azul, por lo tanto, se escogen las velocidades terminales más negativas posibles para cada espectro y que cumplan cierta condición que se explica a continuación. El procedimiento corresponde al código \ref{cod:vrot}.
 
-Se utiliza la técnica de \textit{sigma clipping} para obtener la base de ruido de los espectros con un número de 5 desviaciones estándar para el límite de recorte tanto superior como inferior, además de las iteraciones necesarias para que el algoritmo converja. Suponiendo que el promedio del ruido se anula, entonces la temperatura de ruido o valor RMS del ruido es igual a la desviación estándar del mismo.
+Se utiliza la técnica de \textit{sigma clipping} para obtener la base de ruido de los espectros con un número de tres y media desviaciones estándar para el límite de recorte tanto superior como inferior, además de las iteraciones necesarias para que el algoritmo converja. Suponiendo que el promedio del ruido se anula, entonces la temperatura de ruido o valor RMS del ruido es igual a la desviación estándar del mismo.
 
 La velocidad terminal se define para cada longitud $l$ y para cada latitud $b$ como aquella velocidad del primer punto del espectro de emisión cuya temperatura sea cinco veces mayor a la temperatura de ruido, considerando primero las velocidades del lado del corrimiento al azul del espectro, es decir, recorriendo el espectro desde la velocidad más negativa a la más positiva. Esta condición se muestra en la figura \ref{fig:vterminal}.
 
@@ -64,7 +64,7 @@ A continuación, se escoge para cada longitud $l$ el máximo maximorum entre las
 
 Se usa la ecuación \ref{eq:vrot} y los máximos maximorum de velocidades terminales para graficar en la figura \ref{fig:vrot} las velocidades rotacionales para cada longitud.
 
-Se utiliza la ecuación \ref{eq:wrot} junto con los máximos maximorum de velocidades terminales para graficar en la figura \ref{fig:vrot} las velocidades angulares para cada longitud.
+Se utiliza la ecuación \ref{eq:wrot} junto con los máximos maximorum de velocidades terminales para graficar en la figura \ref{fig:w} las velocidades angulares para cada longitud.
 
 \begin{figure}[htbp]
 	\includegraphics{rsc/vrot.pdf}

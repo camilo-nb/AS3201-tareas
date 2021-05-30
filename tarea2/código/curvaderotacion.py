@@ -47,6 +47,21 @@ R = R0*np.sin(l*np.pi/180.)
 
 if __name__ == "__main__":
     
+    plt.rcParams.update({'font.size': 7})
+    fig, ax = plt.subplots(figsize=(3.25, 3.25))
+    ax.plot(v, data[14][115], c='k', lw=0.5)
+    ax.axhline(5*rms[14][115], c='k', lw=0.5, ls="--")
+    ax.axvline(v[iv_terminal[14][115]], c='k', lw=0.5, ls="--")
+    ax.set_xlabel(r"$v$ [km/s]")
+    ax.set_ylabel(r"$T$ [K]")
+    ax.text(0.1, 0.9, f"$l=${l[115]:.2f}", ha='left', va='center', transform=ax.transAxes)
+    ax.text(0.1, 0.85, f"$b=${b[14]:.2f}", ha='left', va='center', transform=ax.transAxes)
+    ax.text(0.1, 0.8, f"$v=${v[iv_terminal[14][115]]:.2f}", ha='left', va='center', transform=ax.transAxes)
+    ax.yaxis.set_tick_params(rotation=90)
+    ax.tick_params(direction="in", top=True, right=True)
+    fig.savefig("../informe/rsc/vterminal.pdf")
+    plt.show()
+    
     w0 = v0/R0.to(u.km)
 
     w = w0+vrot/R.to(u.km)

@@ -14,22 +14,7 @@
 \usepackage{physics}
 
 \usepackage{siunitx}
-\DeclareSIUnit{\belmilliwatt}{Bm}
-\DeclareSIUnit{\dBm}{\deci\belmilliwatt}
-\DeclareSIUnit\lightyear{ly}
-\newcommand*{\ra}[2][]{{% extra pair of braces for solution 1, doesn't hurt for solution 2
-		%   \def\SIUnitSymbolDegree{\textsuperscript{h}}%     Solution 1
-		%   \def\SIUnitSymbolArcminute{\textsuperscript{m}}%  Solution 1
-		%   \def\SIUnitSymbolArcsecond{\textsuperscript{s}}%  Solution 1
-		\ang[
-		math-degree=\textsuperscript{h},             % Solution 2
-		text-degree=\textsuperscript{h},             % Solution 2
-		math-arcminute=\textsuperscript{m},          % Solution 2
-		text-arcminute=\textsuperscript{m},          % Solution 2
-		math-arcsecond=\textsuperscript{s},          % Solution 2
-		text-arcsecond=\textsuperscript{s},          % Solution 2
-		#1]{#2}%
-}}
+\DeclareSIUnit{\parsec}{pc}
 \usepackage{booktabs}
 \usepackage{scrextend}
 \def\tablename{Tabla}

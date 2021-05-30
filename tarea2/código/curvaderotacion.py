@@ -49,9 +49,9 @@ if __name__ == "__main__":
     
     plt.rcParams.update({'font.size': 7})
     fig, ax = plt.subplots(figsize=(3.25, 3.25))
-    ax.plot(v, data[14][115], c='k', lw=0.5)
-    ax.axhline(5*rms[14][115], c='k', lw=0.5, ls="--")
-    ax.axvline(v[iv_terminal[14][115]], c='k', lw=0.5, ls="--")
+    ax.plot(v, data[14][115], c='k', lw=0.25, marker='s', markersize=1, mfc="none", markeredgewidth=0.25)
+    ax.axhline(5*rms[14][115], c='k', lw=0.25, ls="--")
+    ax.axvline(v[iv_terminal[14][115]], c='k', lw=0.25, ls="--")
     ax.set_xlabel(r"$v_\mathrm{LSR}$ [km/s]")
     ax.set_ylabel(r"$T$ [K]")
     ax.text(0.1, 0.9, f"$l=${l[115]:.3f}", ha='left', va='center', transform=ax.transAxes)
@@ -68,7 +68,7 @@ if __name__ == "__main__":
 
     plt.rcParams.update({'font.size': 7})
     fig, ax = plt.subplots(figsize=(3.25, 3.25))
-    ax.plot(-R, vrot, c='k', lw=0.5)
+    ax.plot(-R, vrot, c='k', lw=0.25, marker='s', markersize=1, mfc="none", markeredgewidth=0.25)
     ax.set_xlabel(r"$-R_{\odot}\sin\,l$ [kpc]")
     ax.set_ylabel(r"$v_\mathrm{rot}$ [km/s]")
     ax.yaxis.set_tick_params(rotation=90)
@@ -81,7 +81,7 @@ if __name__ == "__main__":
 
     plt.rcParams.update({'font.size': 7})
     fig, ax = plt.subplots(figsize=(3.25, 3.25))
-    ax.plot(-R, w, c='k', lw=0.5)
+    ax.plot(-R, w, c='k', lw=0.25, marker='s', markersize=1, mfc="none", markeredgewidth=0.25)
     ax.set_xlabel(r"$-R_{\odot}\sin\,l$ [kpc]")
     ax.set_ylabel(r"$\omega$ [rad/s]")
     ax.yaxis.set_tick_params(rotation=90)

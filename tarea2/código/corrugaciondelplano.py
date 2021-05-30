@@ -10,7 +10,7 @@ def Z(l: float, b: float) -> float:
 
 plt.rcParams.update({'font.size': 7})
 fig, ax = plt.subplots(figsize=(3.25, 3.25))
-ax.plot(-R, Z(l, b_v_maximorum), c='k', lw=0.5)
+ax.plot(-R, Z(l, b_v_maximorum), c='k', lw=0.25, marker='s', markersize=1, mfc="none", markeredgewidth=0.25)
 ax.set_xlabel(r"$-R_{\odot}\sin\,l$ [kpc]")
 ax.set_ylabel(r"$Z$ [kpc]")
 ax.yaxis.set_tick_params(rotation=90)

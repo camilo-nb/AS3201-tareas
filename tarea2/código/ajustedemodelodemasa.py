@@ -9,8 +9,8 @@ from curvaderotacion import R, vrot
 
 G = 4.302e-6*u.kpc*u.km**2/u.s**2/u.Msun
 
-vrot = -vrot.value
-R = -R.value
+vrot = vrot.value
+R = R.value
 
 def vel(R: float, M: float) -> float:
     return np.sqrt(G.value*M/R)
@@ -52,19 +52,19 @@ print("rho0 M0 =", popt_sphere_point, "+-", perr_sphere_point, "RMS =", np.sqrt(
 
 plt.rcParams.update({'font.size': 7})
 fig, ax = plt.subplots(figsize=(3.25, 3.25))
-ax.plot(R, -vrot, c='k', lw=0.25, marker='s', markersize=1, mfc="none", markeredgewidth=0.25, label="Datos")
-ax.plot(R, -vel(R, pointlike_mass_model(*popt_point)), c="tab:red", lw=0.5, label="Punto")
-ax.fill_between(R, -vel(R, pointlike_mass_model(*(popt_point+perr_point))), -vel(R, pointlike_mass_model(*(popt_point-perr_point))), facecolor="tab:red", alpha=0.25)
-ax.plot(R, -vel(R, uniform_sphere_and_pointlike_mass_model(R, *popt_sphere_point)), c="tab:purple", lw=0.5, label="Esfera + Punto")
-ax.fill_between(R, -vel(R, uniform_sphere_and_pointlike_mass_model(R, *(popt_sphere_point+perr_sphere_point))), -vel(R, uniform_sphere_and_pointlike_mass_model(R, *(popt_sphere_point-perr_sphere_point))), facecolor="tab:purple", alpha=0.25)
-ax.plot(R, -vel(R, uniform_sphere_mass_model(R, *popt_sphere)), c="tab:orange", lw=0.5, label="Esfera")
-ax.fill_between(R, -vel(R, uniform_sphere_mass_model(R, *(popt_sphere+perr_sphere))), -vel(R, uniform_sphere_mass_model(R, *(popt_sphere-perr_sphere))), facecolor="tab:orange", alpha=0.25)
-ax.plot(R, -vel(R, uniform_disk_and_pointlike_mass_model(R, *popt_disk_point)), c="tab:blue", lw=0.5, label="Disco + Punto")
-ax.fill_between(R, -vel(R, uniform_disk_and_pointlike_mass_model(R, *(popt_disk_point+perr_disk_point))), -vel(R, uniform_disk_and_pointlike_mass_model(R, *(popt_disk_point-perr_disk_point))), facecolor="tab:blue", alpha=0.25)
-ax.plot(R, -vel(R, uniform_disk_mass_model(R, *popt_disk)), c="tab:green", lw=0.5, label="Disco")
-ax.fill_between(R, -vel(R, uniform_disk_mass_model(R, *(popt_disk+perr_disk))), -vel(R, uniform_disk_mass_model(R, *(popt_disk-perr_disk))), facecolor="tab:green", alpha=0.25)
-ax.legend(loc="upper right")
-ax.set_xlabel(r"$-R_{\odot}\sin\,l$ [kpc]")
+ax.plot(R, vrot, c='k', lw=0.25, marker='s', markersize=1, mfc="none", markeredgewidth=0.25, label="Datos")
+ax.plot(R, vel(R, pointlike_mass_model(*popt_point)), c="tab:red", lw=0.5, label="Punto")
+ax.fill_between(R, vel(R, pointlike_mass_model(*(popt_point+perr_point))), vel(R, pointlike_mass_model(*(popt_point-perr_point))), facecolor="tab:red", alpha=0.25)
+ax.plot(R, vel(R, uniform_sphere_and_pointlike_mass_model(R, *popt_sphere_point)), c="tab:purple", lw=0.5, label="Esfera + Punto")
+ax.fill_between(R, vel(R, uniform_sphere_and_pointlike_mass_model(R, *(popt_sphere_point+perr_sphere_point))), vel(R, uniform_sphere_and_pointlike_mass_model(R, *(popt_sphere_point-perr_sphere_point))), facecolor="tab:purple", alpha=0.25)
+ax.plot(R, vel(R, uniform_sphere_mass_model(R, *popt_sphere)), c="tab:orange", lw=0.5, label="Esfera")
+ax.fill_between(R, vel(R, uniform_sphere_mass_model(R, *(popt_sphere+perr_sphere))), vel(R, uniform_sphere_mass_model(R, *(popt_sphere-perr_sphere))), facecolor="tab:orange", alpha=0.25)
+ax.plot(R, vel(R, uniform_disk_and_pointlike_mass_model(R, *popt_disk_point)), c="tab:blue", lw=0.5, label="Disco + Punto")
+ax.fill_between(R, vel(R, uniform_disk_and_pointlike_mass_model(R, *(popt_disk_point+perr_disk_point))), vel(R, uniform_disk_and_pointlike_mass_model(R, *(popt_disk_point-perr_disk_point))), facecolor="tab:blue", alpha=0.25)
+ax.plot(R, vel(R, uniform_disk_mass_model(R, *popt_disk)), c="tab:green", lw=0.5, label="Disco")
+ax.fill_between(R, vel(R, uniform_disk_mass_model(R, *(popt_disk+perr_disk))), vel(R, uniform_disk_mass_model(R, *(popt_disk-perr_disk))), facecolor="tab:green", alpha=0.25)
+ax.legend(loc="lower right")
+ax.set_xlabel(r"$R$ [kpc]")
 ax.set_ylabel(r"$v_\mathrm{rot}$ [km/s]")
 ax.yaxis.set_tick_params(rotation=90)
 ax.tick_params(direction="in", top=True, right=True)

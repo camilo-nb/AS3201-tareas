@@ -42,8 +42,8 @@ for il in range(len(l)):
     v_maximorum[il] = v_terminal[i]
     b_v_maximorum[il] = b[i]
 
-vrot = v0*np.sin(l*np.pi/180.)+v_maximorum*u.km/u.s
-R = R0*np.sin(l*np.pi/180.)
+vrot = v0*abs(np.sin(l*np.pi/180.))+v_maximorum*u.km/u.s*np.sign(np.sin(l*np.pi/180.))
+R = R0*abs(np.sin(l*np.pi/180.))
 
 if __name__ == "__main__":
     
@@ -61,32 +61,31 @@ if __name__ == "__main__":
     ax.tick_params(direction="in", top=True, right=True)
     fig.savefig("../informe/rsc/vterminal.pdf")
     plt.show()
-    
-    w0 = v0/R0.to(u.km)
-
-    w = w0+(v_maximorum*u.km/u.s)/R.to(u.km)
 
     plt.rcParams.update({'font.size': 7})
     fig, ax = plt.subplots(figsize=(3.25, 3.25))
-    ax.plot(-R, vrot, c='k', lw=0.25, marker='s', markersize=1, mfc="none", markeredgewidth=0.25)
-    ax.set_xlabel(r"$-R_{\odot}\sin\,l$ [kpc]")
+    ax.plot(R, vrot, c='k', lw=0.25, marker='s', markersize=1, mfc="none", markeredgewidth=0.25)
+    ax.set_xlabel(r"$R$ [kpc]")
     ax.set_ylabel(r"$v_\mathrm{rot}$ [km/s]")
     ax.yaxis.set_tick_params(rotation=90)
     ax.tick_params(direction="in", top=False, right=True)
-    axl = ax.secondary_xaxis("top", functions=(lambda R: (180./np.pi*np.arcsin(-R/R0.value)-360)%360, lambda l: -R0.value*np.sin(l*np.pi/180.)))
+    axl = ax.secondary_xaxis("top", functions=(lambda R: (180./np.pi*np.arcsin(R/R0.value)-360)%360, lambda l: R0.value*np.sin(l*np.pi/180.)))
     axl.set_xlabel(r"$l$ [°]")
     axl.tick_params(direction="in", top=True)
     fig.savefig("../informe/rsc/vrot.pdf")
     plt.show()
+    
+    w0 = v0/R0.to(u.km)
+    w = w0+abs(v_maximorum*u.km/u.s)/R.to(u.km)  # = vrot/R.to(u.km)
 
     plt.rcParams.update({'font.size': 7})
     fig, ax = plt.subplots(figsize=(3.25, 3.25))
-    ax.plot(-R, w, c='k', lw=0.25, marker='s', markersize=1, mfc="none", markeredgewidth=0.25)
-    ax.set_xlabel(r"$-R_{\odot}\sin\,l$ [kpc]")
+    ax.plot(R, w, c='k', lw=0.25, marker='s', markersize=1, mfc="none", markeredgewidth=0.25)
+    ax.set_xlabel(r"$R$ [kpc]")
     ax.set_ylabel(r"$\omega$ [rad/s]")
     ax.yaxis.set_tick_params(rotation=90)
     ax.tick_params(direction="in", top=False, right=True)
-    axl = ax.secondary_xaxis("top", functions=(lambda R: (180./np.pi*np.arcsin(-R/R0.value)-360)%360, lambda l: -R0.value*np.sin(l*np.pi/180.)))
+    axl = ax.secondary_xaxis("top", functions=(lambda R: (180./np.pi*np.arcsin(R/R0.value)-360)%360, lambda l: R0.value*np.sin(l*np.pi/180.)))
     axl.set_xlabel(r"$l$ [°]")
     axl.tick_params(direction="in", top=True)
     fig.savefig("../informe/rsc/w.pdf")

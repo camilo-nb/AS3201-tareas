@@ -2,9 +2,9 @@
 
 \subsection{Marco teórico}
 
-Sea $P$ un punto a través de la línea de visión a longitud $l$ y de distancia galactocéntrica $R=R_\odot\sin l$. Se supone $P$ bajo un movimiento puramente circular con velocidad $v_\textnormal{rot}(R)$, denominada velocidad rotacional, cuya componente a lo largo de la línea de visión con respecto al LSR, es decir, su velocidad radial medible a través del efecto Doppler, es $v_\textnormal{LSR}$, formando un ángulo $\alpha$ entre ambas, por lo tanto, contrarrestando la velocidad del Sol $v_\odot$ relativa a la línea de visión,
+Sea $P$ un punto a través de la línea de visión a longitud $l$ y distancia galactocéntrica $R=R_\odot\sin l$. Se supone $P$ bajo un movimiento puramente circular con velocidad $v_\textnormal{rot}(R)$, denominada velocidad rotacional, cuya componente a lo largo de la línea de visión con respecto al LSR, es decir, su velocidad radial medible a través del efecto Doppler, es $v_\textnormal{LSR}$, formando un ángulo $\alpha$ entre ambas, por lo tanto, contrarrestando la velocidad del Sol $v_\odot$ relativa a la línea de visión,
 \begin{equation}
-v_\textnormal{LSR}(R)=v(R)\cos\alpha-v_\odot\sin l
+v_\textnormal{LSR}(R)=v_\textnormal{rot}(R)\cos\alpha-v_\odot\sin l
 .\label{eq:vll}\end{equation}
 Sea $\beta$ el ángulo interior que forma el Sol, el punto $P$ y el centro galáctico. Se aprecia que $\beta=90+\alpha$, y, usando el teorema del seno,
 \begin{equation}
@@ -12,12 +12,12 @@ Sea $\beta$ el ángulo interior que forma el Sol, el punto $P$ y el centro galá
 ,\end{equation}
 de modo que la ecuación \ref{eq:vll} se reescribe como,
 \begin{equation}
-v_\textnormal{LSR}(R)=v(R)\frac{R_\odot\sin l}{R}-v_\odot\sin l
+v_\textnormal{LSR}(R)=v_\textnormal{rot}(R)\frac{R_\odot\sin l}{R}-v_\odot\sin l
 ,\label{eq:nomaestra}
 \end{equation}
 y, definiendo la velocidad angular mediante la siguiente relación,
 \begin{equation}
-v(R)=\omega(R)R
+v_\textnormal{rot}(R)=\omega(R)R
 ,\end{equation}
 se obtiene la ecuación maestra de la cinemática de la Galaxia,
 \begin{equation}
@@ -33,7 +33,7 @@ Sea $D_\textnormal{N}$ la distancia cercana y $D_\textnormal{F}$ la distancia le
 D_{\substack{F\\N}}=R_\odot\cos l\pm\sqrt{R^2-R_\odot^2\sin^2l}
 \end{equation}
 
-La velocidad máxima $v_\textnormal{LSR}^{\max}(R)$ que se puede medir en la línea de visión ocurre en el punto $P$ sobre esta que tiene la menor distancia galactocéntrica $R_{\min}=R_\odot\sin l$, suponiendo $\omega$ monotónicamente decreciente con respecto a $R$. Este punto se denomina punto subcentral. Su distancia heliocéntrica es $D_\textnormal{N}=D_\textnormal{F}=R_\odot\cos l=D_{\tan}$ y su velocidad tangencial o rotacional es, gracias a la ecuación \ref{eq:nomaestra}.
+La velocidad máxima $v_\textnormal{LSR}^{\max}(R)$ que se puede medir en la línea de visión ocurre en el punto $P$ sobre esta que tiene la menor distancia galactocéntrica $R_{\min}=R_\odot\sin l$, suponiendo $\omega$ monotónicamente decreciente con respecto a $R$, lo que se puede establecer con el modelo de distribución de masa de disco de la Galaxia, que se estudia en la sección \ref{sec:massmodel} y sugiere $\omega\propto R^{-1/2}$. Este punto se denomina punto subcentral. Su distancia heliocéntrica es $D_\textnormal{N}=D_\textnormal{F}=R_\odot\cos l=D_{\tan}$, su velocidad tangencial o rotacional es, gracias a la ecuación \ref{eq:nomaestra}.
 \begin{equation}
 v_\textnormal{rot}(R_\odot\sin l)=v_\textnormal{LSR}(R_\odot\sin l)+v_\odot\sin l
 ,\label{eq:vrot}\end{equation}
@@ -42,11 +42,11 @@ y su velocidad angular es,
 \omega(R_\odot\sin l)=\frac{v_\textnormal{LSR}}{R_\odot\sin l}+\omega(R_\odot)
 .\label{eq:wrot}\end{equation}
 
-Las velocidades rotacionales permitidas en la galaxia interna, en donde $R<R_\odot$ y luego $\omega(R)>\omega(R_\odot)$, para el cuarto cuadrante galáctico, en donde las longitudes está en el rango $\ang{270}<l<\ang{360}$, de modo que $\sin l<0$, cumplen, según la ecuación \ref{eq:maestra}, con $v_{\textnormal{rot}}<v(R)<0$.
+Las velocidades rotacionales permitidas en la galaxia interna, en donde $R<R_\odot$ y luego $\omega(R)>\omega(R_\odot)$, para el cuarto cuadrante galáctico, en donde las longitudes está en el rango $\ang{270}<l<\ang{360}$, de modo que $\sin l<0$, cumplen, según la ecuación \ref{eq:maestra}, con $v_\textnormal{LSR}(R)<0$, es decir, efecto Doppler con corrimiento al azul.
 
 \subsection{Detalle del algoritmo}
 
-La curva de rotación se deriva de las velocidades terminales del espectro de CO para cada longitud galáctica $l$. El cuarto cuadrante galáctico tiene emisión con corrimiento al azul, por lo tanto, se escogen las velocidades terminales más negativas posibles para cada espectro y que cumplan cierta condición que se explica a continuación. El procedimiento corresponde al código \ref{cod:vrot}.
+La curva de rotación se deriva de las velocidades terminales del espectro de CO para cada longitud galáctica $l$. El cuarto cuadrante galáctico tiene emisión con corrimiento al azul, por lo tanto, se escogen las velocidades terminales más negativas posibles para cada espectro y que cumplan cierta condición que se explica a continuación. El procedimiento corresponde al código \ref{cod:vrot} y se hacen los cálculos utilizando valores absolutos cuando corresponda, para tener bien definidos los radios y velocidades rotacionales como positivos, puesto que en este cuadrante el seno de la longitud es negativo.
 
 Se utiliza la técnica de \textit{sigma clipping} para obtener la base de ruido de los espectros con un número de tres y media desviaciones estándar para el límite de recorte tanto superior como inferior, además de las iteraciones necesarias para que el algoritmo converja. Suponiendo que el promedio del ruido se anula, entonces la temperatura de ruido o valor RMS del ruido es igual a la desviación estándar del mismo.
 

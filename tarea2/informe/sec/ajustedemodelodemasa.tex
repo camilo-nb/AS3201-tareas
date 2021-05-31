@@ -26,7 +26,7 @@ Se estudian cinco modelos de distribución de masa para la galaxia, listados a c
 \item Esfera uniforme con una masa puntual en el centro. $M(R)=\frac{4}{3}\pi R^3\rho_0+M_0$. Dos parámetros libres, $\rho_0$ y $M_0$.
 \end{itemize}
 
-\subsection{Detalla del algoritmo}
+\subsection{Detalle del algoritmo}
 
 El código \ref{cod:massmodel} muestra el siguiente procedimiento. Se evalúan los cinco modelos de distribución de masa en la ecuación \ref{eq:vmass} y se realiza un ajuste no lineal de mínimos cuadrados según el algoritmo de Levenberg-Marquardt para cada modelo, asumiendo una desviación estándar de la unidad para las velocidades de rotación. Además, se calcula el error RMS de cada modelo con respecto a las velocidades de rotación medidas para así determinar el mejor ajuste.
 
